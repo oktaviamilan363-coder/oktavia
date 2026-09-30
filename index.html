@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LAN Tutorial by Oktavia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1e293b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #0f172a;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0f172a, #075985, #0284c7);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #7dd3fc;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #e0f2fe;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 28px;
+            background: white;
+            color: #0369a1;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        /* ================= DASHBOARD ================= */
+
+        .dashboard {
+            background: white;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(15,23,42,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h3 {
+            color: #0369a1;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        /* ================= IDENTITAS ================= */
+
+        .identity {
+            width: 100%;
+        }
+
+        .identity-item {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .identity-item:last-child {
+            border-bottom: none;
+        }
+
+        .identity-label {
+            width: 150px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .identity-value {
+            color: #64748b;
+        }
+
+        /* ================= MATERI ================= */
+
+        .materi {
+            background: #f8fafc;
+        }
+
+        .materi-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .materi-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(15,23,42,0.08);
+        }
+
+        .materi-card h3 {
+            color: #0369a1;
+            margin-bottom: 15px;
+        }
+
+        .materi-card p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #475569;
+        }
+
+        .materi-card ul {
+            padding-left: 25px;
+            line-height: 2;
+            color: #475569;
+        }
+
+        /* ================= POWERPOINT ================= */
+
+        .powerpoint {
+            background: white;
+        }
+
+        .upload-box {
+            border: 2px dashed #38bdf8;
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            background: #f0f9ff;
+            margin-bottom: 25px;
+        }
+
+        .upload-box h3 {
+            color: #0369a1;
+            margin-bottom: 10px;
+        }
+
+        .upload-box p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #0284c7;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .upload-label:hover {
+            background: #0369a1;
+            transform: translateY(-2px);
+        }
+
+        #pptName {
+            margin-top: 15px;
+            color: #0369a1;
+            font-weight: bold;
+        }
+
+        .ppt-preview {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .ppt-placeholder {
+            color: #64748b;
+        }
+
+        .ppt-placeholder .icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .ppt-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ================= VIDEO ================= */
+
+        .video-section {
+            background: #f8fafc;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(15,23,42,0.08);
+        }
+
+        .video-card h3 {
+            color: #0369a1;
+            margin-bottom: 15px;
+        }
+
+        .video-preview {
+            width: 100%;
+            height: 280px;
+            background: #0f172a;
+            border-radius: 12px;
+            object-fit: contain;
+            margin-top: 20px;
+        }
+
+        .video-name {
+            margin-top: 12px;
+            color: #64748b;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .reset-btn {
+            margin-top: 15px;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: #e2e8f0;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        .reset-btn:hover {
+            background: #cbd5e1;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            color: #cbd5e1;
+            margin: 5px;
+        }
+
+        footer span {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .dashboard-container,
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .identity-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .identity-label {
+                width: auto;
+            }
+
+            .ppt-preview {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+        <div class="logo">
+            LAN <span>Tutorial</span>
+        </div>
+
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#materi">Materi</a></li>
+            <li><a href="#powerpoint">PowerPoint</a></li>
+            <li><a href="#video">Video</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                LAN Tutorial <span>by Oktavia</span>
+            </h1>
+
+            <p>
+                Website tutorial pembelajaran mengenai pembuatan
+                dan penggunaan kabel LAN Cross Over.
+            </p>
+
+            <a href="#dashboard" class="hero-button">
+                Mulai Tutorial
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard" class="dashboard">
+
+        <div class="section-title">
+            <h2>Dashboard</h2>
+            <p>Informasi pembelajaran dan identitas mahasiswa</p>
+        </div>
+
+        <div class="dashboard-container">
+
+            <!-- Kata Pengantar -->
+
+            <div class="card">
+
+                <h3>📖 Kata Pengantar</h3>
+
+                <p>
+                    Puji syukur saya panjatkan kepada Tuhan Yang Maha Esa
+                    karena atas rahmat dan karunia-Nya website pembelajaran
+                    dengan judul <b>"LAN Tutorial by Oktavia"</b> ini dapat
+                    dibuat dengan baik.
+                </p>
+
+                <br>
+
+                <p>
+                    Website ini dibuat sebagai media pembelajaran untuk
+                    memberikan informasi mengenai kabel LAN Cross Over,
+                    mulai dari pengertian, fungsi, susunan warna kabel,
+                    hingga proses pembuatannya.
+                </p>
+
+                <br>
+
+                <p>
+                    Semoga website ini dapat membantu mahasiswa dalam
+                    memahami materi jaringan komputer dengan lebih mudah,
+                    menarik, dan interaktif.
+                </p>
+
+            </div>
+
+
+            <!-- Identitas -->
+
+            <div class="card">
+
+                <h3>👩‍🎓 Identitas Mahasiswa</h3>
+
+                <div class="identity">
+
+                    <div class="identity-item">
+                        <div class="identity-label">Nama</div>
+                        <div class="identity-value">
+                            Oktavia Milanisty
+                        </div>
+                    </div>
+
+                    <div class="identity-item">
+                        <div class="identity-label">NIM</div>
+                        <div class="identity-value">
+                            062640723233
+                        </div>
+                    </div>
+
+                    <div class="identity-item">
+                        <div class="identity-label">Kelas</div>
+                        <div class="identity-value">
+                            1TIB
+                        </div>
+                    </div>
+
+                    <div class="identity-item">
+                        <div class="identity-label">Jurusan</div>
+                        <div class="identity-value">
+                            Teknik Komputer
+                        </div>
+                    </div>
+
+                    <div class="identity-item">
+                        <div class="identity-label">Prodi</div>
+                        <div class="identity-value">
+                            Teknologi Informatika Multimedia Digital
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MATERI ================= -->
+
+    <section id="materi" class="materi">
+
+        <div class="section-title">
+
+            <h2>🔌 Materi Kabel LAN Cross Over</h2>
+
+            <p>
+                Pengenalan dasar kabel jaringan Cross Over
+            </p>
+
+        </div>
+
+        <div class="materi-container">
+
+            <div class="materi-card">
+
+                <h3>1. Pengertian Kabel LAN Cross Over</h3>
+
+                <p>
+                    Kabel LAN Cross Over adalah jenis kabel jaringan
+                    Ethernet yang digunakan untuk menghubungkan dua
+                    perangkat yang memiliki jenis sama secara langsung,
+                    misalnya komputer dengan komputer atau switch dengan
+                    switch.
+                </p>
+
+                <h3>2. Fungsi Kabel Cross Over</h3>
+
+                <ul>
+                    <li>Menghubungkan komputer dengan komputer.</li>
+                    <li>Menghubungkan switch dengan switch.</li>
+                    <li>Menghubungkan perangkat jaringan yang sejenis.</li>
+                    <li>Digunakan untuk komunikasi data secara langsung.</li>
+                </ul>
+
+                <br>
+
+                <h3>3. Susunan Warna Kabel</h3>
+
+                <p>
+                    Kabel Cross Over menggunakan susunan standar
+                    <b>T568A pada salah satu ujung</b> dan
+                    <b>T568B pada ujung lainnya</b>.
+                </p>
+
+                <ul>
+                    <li>Putih Hijau</li>
+                    <li>Hijau</li>
+                    <li>Putih Orange</li>
+                    <li>Biru</li>
+                    <li>Putih Biru</li>
+                    <li>Orange</li>
+                    <li>Putih Coklat</li>
+                    <li>Coklat</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= POWERPOINT ================= -->
+
+    <section id="powerpoint" class="powerpoint">
+
+        <div class="section-title">
+
+            <h2>📊 Preview PowerPoint</h2>
+
+            <p>
+                Upload materi PowerPoint mengenai kabel LAN Cross Over
+            </p>
+
+        </div>
+
+        <div class="upload-box">
+
+            <h3>Upload File PowerPoint</h3>
+
+            <p>
+                Pilih file PPT atau PPTX dari komputer kamu.
+            </p>
+
+            <label for="pptFile" class="upload-label">
+                📁 Pilih PowerPoint
+            </label>
+
+            <input
+                type="file"
+                id="pptFile"
+                accept=".ppt,.pptx,.pdf"
+            >
+
+            <div id="pptName">
+                Belum ada file yang dipilih
+            </div>
+
+        </div>
+
+
+        <div class="ppt-preview" id="pptPreview">
+
+            <div class="ppt-placeholder">
+
+                <div class="icon">📊</div>
+
+                <h3>Preview PowerPoint</h3>
+
+                <p>
+                    File PowerPoint yang kamu pilih akan
+                    ditampilkan di area ini.
+                </p>
+
+                <br>
+
+                <small>
+                    Untuk preview langsung di browser,
+                    gunakan file PDF.
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VIDEO ================= -->
+
+    <section id="video" class="video-section">
+
+        <div class="section-title">
+
+            <h2>🎥 Video Tutorial</h2>
+
+            <p>
+                Upload maksimal 2 video tutorial kabel LAN Cross Over
+            </p>
+
+        </div>
+
+
+        <div class="video-grid">
+
+            <!-- VIDEO 1 -->
+
+            <div class="video-card">
+
+                <h3>🎬 Video Tutorial 1</h3>
+
+                <label
+                    for="video1"
+                    class="upload-label">
+                    📁 Upload Video 1
+                </label>
+
+                <input
+                    type="file"
+                    id="video1"
+                    accept="video/*"
+                >
+
+                <video
+                    id="preview1"
+                    class="video-preview"
+                    controls
+                    style="display:none;">
+                </video>
+
+                <div
+                    id="videoName1"
+                    class="video-name">
+                    Belum ada video yang dipilih
+                </div>
+
+                <button
+                    class="reset-btn"
+                    onclick="resetVideo(1)">
+                    Reset Video
+                </button>
+
+            </div>
+
+
+            <!-- VIDEO 2 -->
+
+            <div class="video-card">
+
+                <h3>🎬 Video Tutorial 2</h3>
+
+                <label
+                    for="video2"
+                    class="upload-label">
+                    📁 Upload Video 2
+                </label>
+
+                <input
+                    type="file"
+                    id="video2"
+                    accept="video/*"
+                >
+
+                <video
+                    id="preview2"
+                    class="video-preview"
+                    controls
+                    style="display:none;">
+                </video>
+
+                <div
+                    id="videoName2"
+                    class="video-name">
+                    Belum ada video yang dipilih
+                </div>
+
+                <button
+                    class="reset-btn"
+                    onclick="resetVideo(2)">
+                    Reset Video
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>LAN Tutorial by Oktavia</span>
+        </p>
+
+        <p>
+            Oktavia Milanisty | 062640723233 | Kelas 1TIB
+        </p>
+
+        <p>
+            Teknik Komputer - Teknologi Informatika Multimedia Digital
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= POWERPOINT ================= */
+
+        const pptFile = document.getElementById("pptFile");
+        const pptName = document.getElementById("pptName");
+        const pptPreview = document.getElementById("pptPreview");
+
+        pptFile.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            pptName.textContent =
+                "File dipilih: " + file.name;
+
+            /*
+                Jika file berupa PDF,
+                browser dapat menampilkannya secara langsung.
+            */
+
+            if (file.type === "application/pdf") {
+
+                const fileURL =
+                    URL.createObjectURL(file);
+
+                pptPreview.innerHTML = `
+                    <iframe
+                        src="${fileURL}">
+                    </iframe>
+                `;
+
+            } else {
+
+                pptPreview.innerHTML = `
+                    <div class="ppt-placeholder">
+
+                        <div class="icon">📊</div>
+
+                        <h3>${file.name}</h3>
+
+                        <p>
+                            File PowerPoint berhasil dipilih.
+                        </p>
+
+                        <p>
+                            Browser tidak dapat menampilkan
+                            PPT/PPTX lokal secara langsung.
+                        </p>
+
+                        <br>
+
+                        <a
+                            href="${URL.createObjectURL(file)}"
+                            download="${file.name}"
+                            class="upload-label">
+                            ⬇ Buka / Download File
+                        </a>
+
+                    </div>
+                `;
+            }
+
+        });
+
+
+        /* ================= VIDEO ================= */
+
+        function setupVideo(inputId, videoId, nameId) {
+
+            const input =
+                document.getElementById(inputId);
+
+            const video =
+                document.getElementById(videoId);
+
+            const name =
+                document.getElementById(nameId);
+
+            input.addEventListener("change", function () {
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                const videoURL =
+                    URL.createObjectURL(file);
+
+                video.src = videoURL;
+
+                video.style.display = "block";
+
+                name.textContent =
+                    "Video: " + file.name;
+
+            });
+        }
+
+
+        setupVideo(
+            "video1",
+            "preview1",
+            "videoName1"
+        );
+
+        setupVideo(
+            "video2",
+            "preview2",
+            "videoName2"
+        );
+
+
+        /* ================= RESET VIDEO ================= */
+
+        function resetVideo(number) {
+
+            const input =
+                document.getElementById(
+                    "video" + number
+                );
+
+            const video =
+                document.getElementById(
+                    "preview" + number
+                );
+
+            const name =
+                document.getElementById(
+                    "videoName" + number
+                );
+
+            video.pause();
+
+            video.removeAttribute("src");
+
+            video.load();
+
+            video.style.display = "none";
+
+            input.value = "";
+
+            name.textContent =
+                "Belum ada video yang dipilih";
+        }
+
+    </script>
+
+</body>
+</html>
